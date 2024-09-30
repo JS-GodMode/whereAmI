@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-const btn = document.querySelector('.btn-country');
-const countriesContainer = document.querySelector('.countries');
+const btn = document.querySelector(".btn-country");
+const countriesContainer = document.querySelector(".countries");
 
 ///////////////////////////////////////
-const renderCountry = function (data, className = '') {
+const renderCountry = function (data, className = "") {
   const html = `
     <article class="country ${className}">
     <img class="country__img" src="${data.flags.png}" />
@@ -23,14 +23,14 @@ const renderCountry = function (data, className = '') {
                 </div>
                 </article>`;
 
-  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.insertAdjacentHTML("beforeend", html);
   countriesContainer.style.opacity = 1;
 };
 
 const renderErr = function (message) {
   countriesContainer.style.opacity = 1;
 
-  countriesContainer.insertAdjacentText('beforeend', message);
+  countriesContainer.insertAdjacentText("beforeend", message);
 };
 
 /*
@@ -102,7 +102,7 @@ getCountryAndNeighbors('Lebanon');
 
 const getCountryData = function (country) {
   getJSON(`https://restcountries.com/v3.1/name/${country}`)
-    .then(data => {
+    .then((data) => {
       renderCountry(data[0]);
       const neighbor = data[0].borders[0];
       if (!neighbor) return;
@@ -110,14 +110,14 @@ const getCountryData = function (country) {
       //neighbors
       return getJSON(
         `https://restcountries.com/v3.1/alpha/${neighbor}`,
-        'Country not found'
+        "Country not found"
       );
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
-      renderCountry(data[0], 'neighbour');
+      renderCountry(data[0], "neighbour");
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(`${err} 💥💥💥💥💥`);
       renderErr(`Something went wrong ${err.message}`);
     })
@@ -324,8 +324,8 @@ const whereAmI = async () => {
     // }
 */
 
-const getJSON = function (url, errMsg = 'Something went wrong') {
-  return fetch(url).then(response => {
+const getJSON = function (url, errMsg = "Something went wrong") {
+  return fetch(url).then((response) => {
     if (!response.ok) throw new Error(`${errMsg} (${response.status})`);
     return response.json();
   });
@@ -386,32 +386,32 @@ get3Countries('India', 'Brazil', 'Australia');
 const timeout = function (sec) {
   return new Promise((_, reject) => {
     setTimeout(() => {
-      reject(new Error('Request took too long!'));
+      reject(new Error("Request took too long!"));
     }, sec * 1000);
   });
 };
 
 Promise.race([
   getJSON(`https://restcountries.com/v3.1/name/Mexico`),
-  timeout(0.1),
+  timeout(3),
 ])
-  .then(res => console.log(res[0]))
-  .catch(err => console.error(err));
+  .then((res) => console.log(res[0]))
+  .catch((err) => console.error(err));
 
 //Promise.allSettled
 Promise.allSettled([
-  Promise.resolve('success'),
-  Promise.resolve('success'),
-  Promise.resolve('success'),
-  Promise.reject('reject'),
-]).then(res => console.log(res));
+  Promise.resolve("success"),
+  Promise.resolve("success"),
+  Promise.resolve("success"),
+  Promise.reject("reject"),
+]).then((res) => console.log(res));
 
 //Promise.any
 
 //Promise.allSettled
 Promise.any([
-  Promise.resolve('success'),
-  Promise.resolve('success'),
-  Promise.resolve('success'),
-  Promise.reject('reject'),
-]).then(res => console.log(res));
+  Promise.resolve("success"),
+  Promise.resolve("success"),
+  Promise.resolve("success"),
+  Promise.reject("reject"),
+]).then((res) => console.log(res));
