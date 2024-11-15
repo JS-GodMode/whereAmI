@@ -40,7 +40,7 @@ The goal of this repository is to serve as a reference for developers looking to
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/whereAmI.git
+   git clone https://github.com/JS-GodMode/whereAmI.git
    ```
 
 2. Navigate to the project folder:
@@ -68,4 +68,4 @@ Contributions are welcome! If you'd like to contribute, please fork the reposito
 
 > This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License**. For more details, see the LICENSE file.
 
-**Usage Restrictions**: Forkify is available solely for viewing and learning purposes. No commercial use, resale, or teaching distribution is allowed.
+**Usage Restrictions**: WhereAmI is available solely for viewing and learning purposes. No commercial use, resale, or teaching distribution is allowed.
